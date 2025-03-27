@@ -5,7 +5,7 @@ export default function Sobre() {
   return (
     <View style={styles.container}>
           <Text style={styles.title}>Bem-vindo à página Sobre!</Text>
-          <Link href="/index" style={styles.button}>Ir para Home</Link>
+          <Link href="/" style={styles.button}>Ir para Home</Link>
         </View>
   );
 }
