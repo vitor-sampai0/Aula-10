@@ -1,42 +1,75 @@
-import { View, Text, Button } from 'react-native';
-import { Link, Stack, useNavigation } from 'expo-router';
+
+
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { Link } from 'expo-router';
 
 export default function Home() {
-  const navigation = useNavigation();
 
-  const handShowHeader = () => {
-    navigation.setOptions({headerShown: true})
-  }
+    return (
+        <View>
+            <Link href="/sobre" asChild>
+                <Pressable style={styles.button}>
+                    <Text style={styles.buttonText}>Ir para Sobre</Text>
+                </Pressable>    
+            </Link>
 
-  const handHideHeader = () => {
-    navigation.setOptions({headerShown: false});
-  }
-  return ( 
-    <View>
-      <Stack.Screen options={{
-        title: 'Senai',
-        headerRight: () => {
-          <Button
-            onPress={() => alert ('Olá, Aula de Mobile')}
-            title="Info"
-            color="#000"
-            />
-        },
-        headerStyle: {
-          backgroundColor: '#a0522d'
-        },
-        headerTintColor: '#f0f8ff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          fontSize: 30,
-          
-        }
+            <Link href="/(aux)/termos" asChild>
+                <Pressable style={styles.button}>
+                    <Text style={styles.buttonText}>Ir para Termos de Uso</Text>
+                </Pressable>
+            </Link>
 
-      }}/>
-
-      <Button title="Ocultar Header" onPress={handHideHeader}></Button>
-      <Button title="Mostrar Header" onPress={handShowHeader}></Button>
-    </View>
-  );
+        </View>
+    );
 }
 
+const styles = StyleSheet.create({
+    container: {
+      flexGrow: 1,
+      padding: 20,
+      backgroundColor: '#f5f5f5',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      marginBottom: 20,
+      color: '#333',
+    },
+    section: {
+      marginBottom: 20,
+      padding: 15,
+      backgroundColor: '#fff',
+      borderRadius: 8,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    sectionTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10,
+      color: '#3b5998',
+    },
+    sectionText: {
+      fontSize: 16,
+      color: '#666',
+      lineHeight: 24,
+    },
+    button: {
+      backgroundColor: '#3b5998',
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      borderRadius: 5,
+      alignSelf: 'center',
+      marginTop: 20,
+    },
+    buttonText: {
+      color: '#fff',
+      fontSize: 16,
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
+  });
